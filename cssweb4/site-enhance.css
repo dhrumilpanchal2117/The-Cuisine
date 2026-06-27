@@ -1,0 +1,217 @@
+/* Shared visual upgrades for the whole site */
+
+:root{
+  --brand:#7a3f2e;      /* warm brown */
+  --brand-2:#d39b3a;    /* golden */
+  --ink:#1f2328;
+  --muted:#6b7280;
+  --card:#ffffff;
+  --shadow:0 10px 30px rgba(17,24,39,.10);
+  --radius:18px;
+}
+
+html{scroll-behavior:smooth;}
+
+body{
+  color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 15% 0%, rgba(211,155,58,.18), transparent 60%),
+    radial-gradient(900px 480px at 85% 10%, rgba(122,63,46,.18), transparent 55%),
+    #fff;
+}
+
+/* Page entry animation */
+body{
+  animation: bbFadeIn .65s ease-out both;
+}
+@keyframes bbFadeIn{
+  from{opacity:0; transform:translateY(6px);} 
+  to{opacity:1; transform:translateY(0);} 
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce){
+  body{animation:none !important;}
+  *{scroll-behavior:auto !important;}
+  .bb-anim-hover, .bb-hero-float{animation:none !important; transition:none !important;}
+}
+
+/* Navbar */
+.navbar.bg-body-brown{
+  background: linear-gradient(90deg, rgba(122,63,46,1), rgba(163,92,59,1)) !important;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.navbar .navbar-brand img{
+  border-radius:14px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.18);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.navbar .navbar-brand img:hover{
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,.22);
+}
+
+.navbar .nav-link{
+  font-weight:600;
+  letter-spacing:.2px;
+  color:rgba(255,255,255,.92) !important;
+}
+
+.navbar .nav-link:hover,
+.navbar .nav-link.active{
+  color:#fff !important;
+  text-shadow:0 1px 0 rgba(0,0,0,.15);
+}
+
+.navbar .btn-outline-warning{
+  border-width:2px;
+  font-weight:700;
+}
+
+/* Hero / sections */
+.section-panel{
+  margin: 18px auto;
+  padding: 32px 18px;
+  border-radius: var(--radius);
+  background: rgba(255,255,255,.72);
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(17,24,39,.06);
+  backdrop-filter: blur(10px);
+}
+
+/* Card polish */
+.card-modern{
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(17,24,39,.06);
+  border-radius: 16px;
+  background: rgba(255,255,255,.78);
+  box-shadow: 0 16px 40px rgba(17,24,39,.08);
+  backdrop-filter: blur(8px);
+  transform: translateZ(0);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.card-modern::before{
+  content:"";
+  position:absolute;
+  inset:-40% -40% auto -40%;
+  height:120px;
+  background: radial-gradient(circle at 20% 40%, rgba(211,155,58,.35), transparent 55%);
+  transform: rotate(8deg);
+  opacity:.9;
+  pointer-events:none;
+}
+
+.card-modern:hover{
+  transform: translateY(-6px);
+  border-color: rgba(122,63,46,.18);
+  box-shadow: 0 22px 60px rgba(17,24,39,.12);
+}
+
+/* Images */
+.enhance-img{
+  width:100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: calc(var(--radius) - 6px);
+  box-shadow: 0 10px 26px rgba(0,0,0,.10);
+  border: 1px solid rgba(17,24,39,.06);
+}
+
+.hero-img{
+  border-radius: calc(var(--radius) - 4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,.10);
+}
+
+.bb-hero-float{
+  animation: bbFloat 3.8s ease-in-out infinite;
+}
+@keyframes bbFloat{
+  0%,100%{transform: translateY(0);} 
+  50%{transform: translateY(-6px);} 
+}
+
+/* Apply float to hero images that exist on pages */
+.hero-img{ }
+.hero-img{ animation: bbFloat 3.8s ease-in-out infinite; }
+
+
+/* Carousel captions more readable */
+.carousel-caption{
+  background: linear-gradient(180deg, rgba(0,0,0,.55), rgba(0,0,0,.35));
+  border-radius: 14px;
+  padding: 14px 18px;
+  animation: bbCapIn .55s ease-out both;
+}
+@keyframes bbCapIn{
+  from{opacity:0; transform: translateY(8px);} 
+  to{opacity:1; transform: translateY(0);} 
+}
+
+.carousel-caption h5{
+  font-weight:800;
+  letter-spacing:.3px;
+}
+
+/* Improve generic headings */
+h1,h2,h3,h4{
+  letter-spacing:.2px;
+}
+
+/* Footer/ending cards */
+.contact-card{
+  background: rgba(255,255,255,.75);
+  border: 1px solid rgba(17,24,39,.06);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(17,24,39,.08);
+}
+
+.contact-card .btn{
+  width:52px;
+  height:52px;
+  border-radius: 14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,.10);
+}
+
+/* Button micro-interactions (only on outline buttons) */
+.btn-outline-success,
+.btn-outline-warning{
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+}
+.btn-outline-success:hover,
+.btn-outline-warning:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0,0,0,.12);
+}
+
+/* Owl carousel items */
+.owl-theme .item{
+  padding: 10px;
+  border-radius: 16px;
+  transition: transform .25s ease;
+}
+
+.owl-theme .item img{
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.10);
+  transition: transform .25s ease;
+}
+
+.owl-theme .item:hover{ transform: translateY(-5px); }
+.owl-theme .item:hover img{ transform: scale(1.03); }
+
+/* Responsive */
+@media (max-width: 991px){
+  .enhance-img{ height: 210px; }
+}
+@media (max-width: 575px){
+  .enhance-img{ height: 190px; }
+}
+
